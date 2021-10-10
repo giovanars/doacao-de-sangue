@@ -1,0 +1,106 @@
+<div class="container">
+    <div style="text-align: center;">
+        <h1>Seja um doador!</h1>
+    </div>
+
+    <form action="/action_page.php">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" class="form-control" [(ngModel)]="form.nome" placeholder="Nome completo" id="nome" name="nome">
+                </div>
+                <div class="form-group">
+                    <label for="idade">Idade:</label>
+                    <input type="number" class="form-control" [(ngModel)]="form.idade" placeholder="Idade" id="idade" name="idade">
+                </div>
+                <div class="form-group">
+                    <label for="sexo">Sexo:</label>
+                    <select class="form-control" id="sexo" name="sexo" [(ngModel)]="form.sexo">
+                        <option></option>
+                        <option>Masculino</option>
+                        <option>Feminino</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tipoSanguineo">Tipo sanguíneo:</label>
+                    <select class="form-control" id="tipoSanguineo" name="tipoSanguineo" [(ngModel)]="form.tipoSanguineo">
+                        <option></option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>AB</option>
+                        <option>O</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="cep">CEP:</label>
+                    <input type="text" class="form-control" placeholder="Digite seu CEP" id="cep" name="cep" [(ngModel)]="form.sexo" (keyup)="buscarCep($event)">
+                </div>
+                <div class="form-group">
+                    <label for="uf">UF:</label>
+                    <input type="text" class="form-control" id="uf" name="uf" [(ngModel)]="form.uf">
+                </div>
+                <div class="form-group">
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" class="form-control" id="cidade" name="cidade" [(ngModel)]="form.cidade">
+                </div>
+                <div class="form-group">
+                    <label for="bairro">Bairro:</label>
+                    <input type="text" class="form-control" id="bairro" name="bairro" [(ngModel)]="form.bairro">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="rua">Rua:</label>
+                    <input type="text" class="form-control" id="rua" name="rua" [(ngModel)]="form.rua">
+                </div>
+                <div class="form-group">
+                    <label for="numero">Numero:</label>
+                    <input type="text" class="form-control" id="numero" name="numero" [(ngModel)]="form.numero">
+                </div>
+                <div class="form-group">
+                    <label for="complemento">Complemento:</label>
+                    <input type="text" class="form-control" id="complemento" name="complemento" [(ngModel)]="form.complemento">
+                </div>
+
+
+                <button type="button" class="btn btn-primary" (click)="salvarDoador()">Salvar</button>
+            </div>
+        </div>
+    </form>
+    <h3 style="text-align: center;">Tipos Sanguíneos</h3>
+    <div style="text-align: justify;">
+        <ul>
+            <div class="row">
+                <div class="col">
+
+                    <li>
+                        <p>
+                            <b>Sangue A:</b> é um dos tipos mais comuns e contém anticorpos contra o tipo B, também chamado de anti-B, só podendo receber sangue de pessoas do tipo A ou O
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <b>Sangue B:</b> é um dos tipos mais raros e contém anticorpos contra o tipo A, também chamado de anti-A, só podendo receber sangue de pessoas do tipo B ou O
+                        </p>
+                    </li>
+                </div>
+                <div class="col">
+
+                    <li>
+                        <p>
+                            <b>Sangue AB:</b> é um dos tipos mais raros e não possui anticorpos contra A ou B, o que significa que pode receber sangue de todos os tipos sem que haja reação;
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <b>Sangue O:</b> é conhecido como o doador universal e é um dos tipos mais comum, possui anticorpos anti-A e anti-B, só podendo receber sangue de pessoas do tipo O, caso contrário pode a aglutinação das hemácias.
+                        </p>
+                    </li>
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>
