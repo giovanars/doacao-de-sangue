@@ -18,8 +18,8 @@ export class SejaUmDoadorService {
     return this.http.get<ViaCep>(`${urlViaCep}/${cep}/json`);
   }
 
-  salvaDoador(formSejaUmDoador: FormSejaUmDoador): Observable<any> {
-    return this.http.post(urlApi, formSejaUmDoador);
+  salvaDoador(form: FormSejaUmDoador): Observable<any> {
+    return this.http.post(urlApi, form);
   }
 
 }

@@ -14,7 +14,7 @@ export interface ViaCep {
 
 export interface FormSejaUmDoador {
     "nome": string,
-    "idade": number,
+    "idade": string,
     "sexo": string,
     "tipoSanguineo": string,
     "cep": string,
