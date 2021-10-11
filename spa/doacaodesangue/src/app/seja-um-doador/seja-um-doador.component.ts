@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { SejaUmDoadorService } from './service/seja-um-doador.service'
 import { FormSejaUmDoador } from './model/seja-um-doador';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { FormSejaUmDoador } from './model/seja-um-doador';
 })
 export class SejaUmDoadorComponent implements OnInit {
   
-  constructor(private sejaUmDoadorService: SejaUmDoadorService) { }
+  constructor(private service: SejaUmDoadorService) { }
   
   ngOnInit(): void {
   }
@@ -91,12 +92,16 @@ export class SejaUmDoadorComponent implements OnInit {
     let cep = event.target.value.trim().replace("-","");
 
     if (cep.length >= 8 && cep.length < 9) {
-      this.sejaUmDoadorService.getCep(event.target.value.trim()).subscribe(
+      this.service.getCep(event.target.value.trim()).subscribe(
         (res) => {
           this.form.uf = res.uf;
           this.form.cidade = res.localidade;
           this.form.bairro = res.bairro;
           this.form.rua = res.logradouro;
+
+        },(error: HttpErrorResponse) => {
+          console.log("Error");
+          console.log(error.error);
         }
       );
     }
@@ -109,10 +114,14 @@ export class SejaUmDoadorComponent implements OnInit {
     let formHasError = this.validaForm().length === 0;
 
     if (formHasError) {
-      this.sejaUmDoadorService.salvaDoador(this.form).subscribe(
+      this.service.salvaDoador(this.form).subscribe(
         (res) => {
           console.log("Doador salvo com sucesso!");
-        }
+        
+        },(error: HttpErrorResponse) => {
+        console.log("Error");
+        console.log(error.error);
+      }
       );
     } else {
       alert("Preencha os campos corretamente!");
