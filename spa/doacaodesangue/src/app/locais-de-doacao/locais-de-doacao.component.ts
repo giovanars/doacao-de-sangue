@@ -116,12 +116,12 @@ export class LocaisDeDoacaoComponent implements OnInit {
     return this.locaisDeDoacao;
   }
 
-  pesquisar() {    
+  pesquisar() {
     let cep = this.form.cep.replace("-","").trim();
     let cepvalido = cep.length >= 8 && cep.length < 9;
-    
+        
     if (cepvalido && this.form.tiposanguineo != "") {
-      this.service.getInfoGoogleMaps(this.form.cep).subscribe(
+      this.service.getInfoGoogleMaps(cep).subscribe(
         (res) => {               
         res.results.forEach(i => {
           this.endereco = i.formatted_address;
@@ -129,8 +129,7 @@ export class LocaisDeDoacaoComponent implements OnInit {
           this.longitude = i.geometry.location.lng;
         });
         
-        console.log(`this.latitude ${this.latitude}`);
-        console.log(`this.longitude ${this.longitude}`);
+        console.log(res);        
         
       },(error: HttpErrorResponse) => {
         console.log("Error");
