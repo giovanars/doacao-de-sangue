@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { ResponseGoogleMaps } from '../model/locais-de-doacao';
 
 const urlGoogleMaps = "https://maps.googleapis.com/maps/api/geocode/json?";
-const key = "AIzaSyBM0MCoHJz9KaX_AxV8Tujl_jjbIk225wY";
+const key = "key_do_google_aqui";
 
 @Injectable({
   providedIn: 'root'
