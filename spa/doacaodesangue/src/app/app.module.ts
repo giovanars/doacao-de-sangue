@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PorQueDoarComponent } from './por-que-doar/por-que-doar.component';
 import { LocaisDeDoacaoComponent } from './locais-de-doacao/locais-de-doacao.component';
-import { SejaUmDoadorComponent } from './seja-um-doador/seja-um-doador.component';
+import { RegistreUmPedidoComponent } from './registre-um-pedido/registre-um-pedido.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -17,7 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     PorQueDoarComponent,
     LocaisDeDoacaoComponent,
-    SejaUmDoadorComponent
+    RegistreUmPedidoComponent
   ],
   imports: [
     BrowserModule,

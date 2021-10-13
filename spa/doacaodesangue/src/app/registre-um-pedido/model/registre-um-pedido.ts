@@ -12,9 +12,8 @@ export interface ViaCep {
     "siafi": string
 }
 
-export interface FormSejaUmDoador {
+export interface FormRegistreUmPedido {
     "nome": string,
-    "idade": string,
     "sexo": string,
     "tipoSanguineo": string,
     "cep": string,

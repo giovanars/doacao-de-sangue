@@ -1,20 +1,29 @@
 <div style="text-align: center;">
     <h1>Locais de Doação :)</h1>
 </div>
+<h3 style="text-align: center; padding: 15px;">Você pode buscar diretamente pelo nome do paciente ou pode doar no hemocentro mais próximo!</h3>
 
 <div class="container">
-    <div style="text-align: center; padding-left: 13%; padding-right: 13%;">
-        <form>
+    <div style="text-align: center; padding-left: 5%; padding-right: 5%;">
+        <form style="padding-top: 1%;">
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-5">
+                    <div class="form-group">
+                        <label for="nome">Nome do Paciente:</label>
+                        <input type="text" class="form-control" placeholder="Nome do Paciente" id="nome" name="nome" [(ngModel)]="form.nome">
+                    </div>
+                </div>
+            </div>
+                <div class="row">
+                <div class="col-sm-2">
                     <div class="form-group">
                         <label for="cep">CEP:</label>
                         <input type="text" class="form-control" placeholder="Digite seu CEP" id="cep" name="cep" [(ngModel)]="form.cep">
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <div class="form-group">
-                        <label for="tipoSanguineo">Tipo sanguíneo:</label>
+                        <label for="tipoSanguineo">Seu tipo sanguíneo:</label>
                         <select class="form-control" id="tipoSanguineo" name="tipoSanguineo" [(ngModel)]="form.tiposanguineo">
                             <option></option>
                             <option>A</option>
@@ -24,9 +33,9 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-sm-3">
-                    <div style="margin-top: 16%;">
-                        <button type="button" class="btn btn-secondary" name="pesquisar" id="pesquisar" (click)="pesquisar()">Ver distância</button>
+                <div class="col-sm-2">
+                    <div>
+                        <button type="button" class="btn btn-secondary" name="pesquisar" id="pesquisar" (click)="pesquisar()">Buscar</button>
                     </div>
                 </div>
             </div>
@@ -39,7 +48,8 @@
     <table class="table table-dark table-striped">
         <thead>
             <tr>
-                <th>Hemocentro</th>
+                <th>Nome do Paciente</th>
+                <th>Hemocentro ou Hospital</th>
                 <th>Endereço</th>
                 <th>CEP</th>
                 <th>Distância</th>
@@ -48,6 +58,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let item of getHemocentros()">
+                <td>{{item.nome}}</td>
                 <td>{{item.hemocentro}}</td>
                 <td>{{item.endereco}}</td>
                 <td>{{item.cep}}</td>
