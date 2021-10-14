@@ -16,6 +16,7 @@ export class LocaisDeDoacaoComponent implements OnInit {
   }
 
   locaisDeDoacao: LocaisDeDoacao[] = [{
+    "nome": "",
     "hemocentro": "Posto Clínicas",
     "endereco": "Av. Enéas Carvalho de Aguiar, 155 1º andar. Cerqueira César/SP",
     "cep":"05403-000",
@@ -28,6 +29,7 @@ export class LocaisDeDoacaoComponent implements OnInit {
     "tipoo":"40%"
   },
   {
+    "nome": "",
     "hemocentro": "Posto Dante Pazzanese",
     "endereco": "Av. Doutor Dante Pazzanese, 500. Ibirapuera/SP",
     "cep":"04012-180",
@@ -40,6 +42,7 @@ export class LocaisDeDoacaoComponent implements OnInit {
     "tipoo":"30%"
   },
   {
+    "nome": "",
     "hemocentro": "Posto Mandaqui",
     "endereco": "Rua Voluntários da Pátria, 4.227. Mandaqui/SP",
     "cep":"02401-400",
@@ -52,6 +55,7 @@ export class LocaisDeDoacaoComponent implements OnInit {
     "tipoo":"45%"
   },
   {
+    "nome": "",
     "hemocentro": "Posto Regional de Osasco",
     "endereco": "Rua Ari Barroso, 355 - Presidente Altino Osasco/SP",
     "cep":"06216-240",
@@ -64,6 +68,7 @@ export class LocaisDeDoacaoComponent implements OnInit {
     "tipoo":"43%"
   },
   {
+    "nome": "",
     "hemocentro": "Posto Barueri",
     "endereco": "Rua Angela Mirella, 354 térreo - Jardim Barueri. Barueri/SP",
     "cep":"06411-330",
@@ -76,6 +81,7 @@ export class LocaisDeDoacaoComponent implements OnInit {
     "tipoo":"10%"
   },
   {
+    "nome": "Gabriel Grego",
     "hemocentro": "Posto Stella Maris",
     "endereco": "Rua Maria Cândida Pereira, 568 - Itapegica Guarulhos/SP",
     "cep":"07041-020",
@@ -90,6 +96,7 @@ export class LocaisDeDoacaoComponent implements OnInit {
   ];
 
   form: FormLocaisDeDoacao = {
+    "nome": "",
     "cep": "",
     "tiposanguineo":""
   }

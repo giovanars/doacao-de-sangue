@@ -1,25 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 
-import { SejaUmDoadorService } from './service/seja-um-doador.service'
-import { FormSejaUmDoador } from './model/seja-um-doador';
+import { RegistreUmPedidoService } from './service/registre-um-pedido'
+import { FormRegistreUmPedido } from './model/registre-um-pedido';
 import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
-  selector: 'app-seja-um-doador',
-  templateUrl: './seja-um-doador.component.html',
-  styleUrls: ['./seja-um-doador.component.scss']
+  selector: 'app-registre-um-pedido',
+  templateUrl: './registre-um-pedido.component.html',
+  styleUrls: ['./registre-um-pedido.component.scss']
 })
-export class SejaUmDoadorComponent implements OnInit {
+export class RegistreUmPedidoComponent implements OnInit {
   
-  constructor(private service: SejaUmDoadorService) { }
+  constructor(private service: RegistreUmPedidoService) { }
   
   ngOnInit(): void {
   }
 
-  form: FormSejaUmDoador = {
+  form: FormRegistreUmPedido = {
     "nome": "",
-    "idade": "",
     "sexo": "",
     "tipoSanguineo": "",
     "cep": "",
@@ -42,15 +41,6 @@ export class SejaUmDoadorComponent implements OnInit {
     
     } if(this.form.cidade.trim() === "") {
       campos.push("Cidade");
-    
-    } if (this.form.idade.trim() == "") {
-      campos.push("Idade");
-
-    } if(parseInt(this.form.idade) < 16) {
-      campos.push("Idade mínima permitida é 16 anos");
-    
-    } if(parseInt(this.form.idade) > 60) {
-      campos.push("Idade máxima permitida é 60 anos");
     
     } if(this.form.nome.trim() === "") {
       campos.push("Nome");
@@ -79,7 +69,6 @@ export class SejaUmDoadorComponent implements OnInit {
     this.form.cep = "";
     this.form.cidade = "";
     this.form.complemento = "";
-    this.form.idade = "";
     this.form.nome = "";
     this.form.numero = "";
     this.form.rua = "";

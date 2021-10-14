@@ -1,5 +1,6 @@
 export interface LocaisDeDoacao {
     "hemocentro": string,
+    "nome": string,
     "endereco": string,
     "cep": string,
     "latitude": number,
@@ -12,6 +13,7 @@ export interface LocaisDeDoacao {
 }
 
 export interface FormLocaisDeDoacao {
+    "nome": string,
     "cep": string,
     "tiposanguineo": string
 }
