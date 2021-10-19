@@ -1,6 +1,7 @@
 package br.com.doacaodesangue.models.entities;
 
 import br.com.doacaodesangue.models.dtos.PedidoDoacaoDto;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -8,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class PedidoDoacao {
 
     @Id
-    public Long id;
+    public String id;
     public String nome;
     public String sexo;
     public String tipoSanguineo;
@@ -20,7 +21,13 @@ public class PedidoDoacao {
     public String uf;
     public String cidade;
 
+    public PedidoDoacao(){
+
+    }
+
     public PedidoDoacao(PedidoDoacaoDto pedidoDoacaoDto) {
+        ObjectId id = new ObjectId();
+        this.setId(id.toString());
         this.nome = pedidoDoacaoDto.getNome();
         this.sexo = pedidoDoacaoDto.getSexo();
         this.tipoSanguineo = pedidoDoacaoDto.getTipoSanguineo();
@@ -33,13 +40,20 @@ public class PedidoDoacao {
         this.cidade = pedidoDoacaoDto.getCidade();
     }
 
-    public Long getId() {
-
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     public String getNome() {
@@ -48,14 +62,6 @@ public class PedidoDoacao {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getCpf() {
-        return sexo;
-    }
-
-    public void setCpf(String sexo) {
-        this.sexo = sexo;
     }
 
     public String getTipoSanguineo() {

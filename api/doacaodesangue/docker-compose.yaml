@@ -5,7 +5,8 @@ services:
     image: mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: MongoDB2019!
+      MONGO_INITDB_ROOT_PASSWORD: 123456
+      MONGO_INITDB_DATABASE: doacao-de-sangue
     ports:
       - "27017:27017"
     volumes:

@@ -10,6 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.net.URI;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/pedido-doacao")
@@ -27,14 +28,17 @@ public class PedidoDoacaoController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<PedidoDoacao> getById(@PathVariable("id") Long id) {
-        PedidoDoacao pedidoDoacao =  pedidoDoacaoService.getById(id);
-        if (pedidoDoacao == null) {
+    public ResponseEntity<PedidoDoacao> getById(@PathVariable("id") String id) {
+        try{
+            PedidoDoacao pedidoDoacao =  pedidoDoacaoService.getById(id);
+            if (pedidoDoacao == null) {
+                return ResponseEntity.notFound().build();
+            }
+            return ResponseEntity.ok(pedidoDoacao);
+        }catch (NoSuchElementException ex){
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(pedidoDoacao);
     }
-
 
     @PostMapping
     public ResponseEntity<PedidoDoacao> create(@RequestBody PedidoDoacaoDto pedidoDoacaoDto) {
@@ -46,17 +50,21 @@ public class PedidoDoacaoController {
 
 
     @PutMapping("{id}")
-    public PedidoDoacao update(@PathVariable("id") Long id, @RequestBody PedidoDoacaoDto pedidoDoacaoDto) {
-        PedidoDoacao pedidoDoacao = pedidoDoacaoService.getById(id);
-        if (pedidoDoacao == null) {
+    public PedidoDoacao update(@PathVariable("id") String id, @RequestBody PedidoDoacaoDto pedidoDoacaoDto) {
+        try{
+            PedidoDoacao pedidoDoacao = pedidoDoacaoService.getById(id);
+            if (pedidoDoacao == null) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Foo Not Found");
+            }
+            return pedidoDoacaoService.update(id, new PedidoDoacao(pedidoDoacaoDto));
+        }catch (NoSuchElementException ex){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Foo Not Found");
         }
-        return pedidoDoacaoService.update(id, new PedidoDoacao(pedidoDoacaoDto));
+
     }
 
-
     @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") Long id) {
+    public void delete(@PathVariable("id") String id) {
         pedidoDoacaoService.delete(id);
     }
 }

@@ -16,7 +16,7 @@ public class PedidoDoacaoServiceImpl implements PedidoDoacaoService {
     }
 
     @Override
-    public PedidoDoacao getById(long id) {
+    public PedidoDoacao getById(String id) {
         return pedidoDoacaoRepository.findById(id).get();
     }
 
@@ -31,13 +31,13 @@ public class PedidoDoacaoServiceImpl implements PedidoDoacaoService {
     }
 
     @Override
-    public PedidoDoacao update(Long id, PedidoDoacao pedidoDoacao) {
+        public PedidoDoacao update(String id, PedidoDoacao pedidoDoacao) {
         pedidoDoacao.setId(id);
         return pedidoDoacaoRepository.save(pedidoDoacao);
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(String id) {
         pedidoDoacaoRepository.delete(pedidoDoacaoRepository.findById(id).get());
     }
 }
