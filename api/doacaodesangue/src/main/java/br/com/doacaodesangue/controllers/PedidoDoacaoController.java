@@ -1,16 +1,25 @@
 package br.com.doacaodesangue.controllers;
 
+import java.net.URI;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.NoSuchElementException;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
+
 import br.com.doacaodesangue.models.dtos.PedidoDoacaoDto;
 import br.com.doacaodesangue.models.entities.PedidoDoacao;
 import br.com.doacaodesangue.services.PedidoDoacaoService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
-
-import java.net.URI;
-import java.util.List;
-import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/pedido-doacao")
@@ -23,8 +32,33 @@ public class PedidoDoacaoController {
     }
 
     @GetMapping
-    public List<PedidoDoacao> getAl() {
-        return pedidoDoacaoService.getAll();
+    public ResponseEntity<List<PedidoDoacaoDto>> getAl() {
+    	
+        List<PedidoDoacao> list = pedidoDoacaoService.getAll();
+        
+        List<PedidoDoacaoDto> pedidoDoacaoDto = new LinkedList<PedidoDoacaoDto>();
+        
+        list.forEach(i -> {
+        	PedidoDoacaoDto p = new PedidoDoacaoDto();        	
+        	
+        	p.setBairro(i.bairro);
+        	p.setCep(i.cep);
+        	p.setCidade(i.cidade);
+        	p.setComplemento(i.complemento);
+        	p.setHemocentro(i.hemocentro);
+        	p.setNome(i.nome);
+        	p.setNumero(i.numero);
+        	p.setRua(i.rua);
+        	p.setSexo(i.sexo);
+        	p.setTipoSanguineo(i.tipoSanguineo);
+        	p.setUf(i.uf);
+        	p.setIdDoador(i.id);
+        	
+        	pedidoDoacaoDto.add(p);
+        });
+        
+        return ResponseEntity.ok(pedidoDoacaoDto);
+        
     }
 
     @GetMapping("{id}")
@@ -64,7 +98,9 @@ public class PedidoDoacaoController {
     }
 
     @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") String id) {
-        pedidoDoacaoService.delete(id);
+    public ResponseEntity<String> delete(@PathVariable String id) {
+        
+    	pedidoDoacaoService.delete(id);
+        return ResponseEntity.ok("Registro deletado com sucesso!");
     }
 }

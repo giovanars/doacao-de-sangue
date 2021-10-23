@@ -1,5 +1,9 @@
 package br.com.doacaodesangue.models.dtos;
 
+import java.math.BigDecimal;
+import java.util.LinkedList;
+import java.util.List;
+
 public class PedidoDoacaoDto {
     public String nome;
     public String sexo;
@@ -11,7 +15,19 @@ public class PedidoDoacaoDto {
     public String complemento;
     public String uf;
     public String cidade;
+    public String hemocentro;
+    public String idDoador;
+    public List<BancoDeSangue> bancoDeSangue = new LinkedList<>();
 
+    public List<BancoDeSangue> getBancoDeSangue() {
+    	    	
+    	bancoDeSangue.add(new BancoDeSangue("tipoA", BigDecimal.valueOf(BancoDeSangue.getPorcentagemAleatoria())));
+    	bancoDeSangue.add(new BancoDeSangue("tipoB", BigDecimal.valueOf(BancoDeSangue.getPorcentagemAleatoria())));
+    	bancoDeSangue.add(new BancoDeSangue("tipoAB", BigDecimal.valueOf(BancoDeSangue.getPorcentagemAleatoria())));
+    	bancoDeSangue.add(new BancoDeSangue("tipoO", BigDecimal.valueOf(BancoDeSangue.getPorcentagemAleatoria())));
+    	
+		return bancoDeSangue;
+	}
     public String getNome() {
         return nome;
     }
@@ -91,4 +107,20 @@ public class PedidoDoacaoDto {
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
+
+	public String getHemocentro() {
+		return hemocentro;
+	}
+
+	public void setHemocentro(String hemocentro) {
+		this.hemocentro = hemocentro;
+	}
+	
+	public void setIdDoador(String id) {
+		this.idDoador = id;		
+	}
+	
+	public String getIdDoador() {
+		return idDoador;
+	}
 }

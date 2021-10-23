@@ -20,6 +20,7 @@ public class PedidoDoacao {
     public String complemento;
     public String uf;
     public String cidade;
+    public String hemocentro;
 
     public PedidoDoacao(){
 
@@ -38,6 +39,7 @@ public class PedidoDoacao {
         this.complemento = pedidoDoacaoDto.getComplemento();
         this.uf = pedidoDoacaoDto.getUf();
         this.cidade = pedidoDoacaoDto.getCidade();
+        this.hemocentro = pedidoDoacaoDto.getHemocentro();
     }
 
     public String getId() {
@@ -127,4 +129,12 @@ public class PedidoDoacao {
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
+
+	public String getHemocentro() {
+		return hemocentro;
+	}
+
+	public void setHemocentro(String hemocentro) {
+		this.hemocentro = hemocentro;
+	}
 }

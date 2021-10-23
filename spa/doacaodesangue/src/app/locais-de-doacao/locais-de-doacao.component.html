@@ -9,19 +9,13 @@
             <div class="row">
                 <div class="col-sm-5">
                     <div class="form-group">
-                        <label for="nome">Nome do Paciente:</label>
-                        <input type="text" class="form-control" placeholder="Nome do Paciente" id="nome" name="nome" [(ngModel)]="form.nome">
+                        <label for="nome">Seu endereço:</label>
+                        <input type="text" class="form-control" placeholder="Digite seu endereço aqui" id="endereco" name="endereco" [(ngModel)]="form.endereco">
                     </div>
                 </div>
             </div>
-                <div class="row">
+            <div class="row">
                 <div class="col-sm-2">
-                    <div class="form-group">
-                        <label for="cep">CEP:</label>
-                        <input type="text" class="form-control" placeholder="Digite seu CEP" id="cep" name="cep" [(ngModel)]="form.cep">
-                    </div>
-                </div>
-                <div class="col-sm-3">
                     <div class="form-group">
                         <label for="tipoSanguineo">Seu tipo sanguíneo:</label>
                         <select class="form-control" id="tipoSanguineo" name="tipoSanguineo" [(ngModel)]="form.tiposanguineo">
@@ -33,7 +27,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <div>
                         <button type="button" class="btn btn-secondary" name="pesquisar" id="pesquisar" (click)="pesquisar()">Buscar</button>
                     </div>
@@ -42,14 +36,15 @@
         </form>
     </div>
     <div class="alert alert-info">
-        <strong>Você esta em:</strong> {{endereco}} / Tipo sanguíneo escolhido: {{form.tiposanguineo}}
+        <strong>Retorno da API Google Geocoding | Você esta em:</strong> {{endereco}} / Tipo sanguíneo escolhido: {{form.tiposanguineo}}
     </div>
 
     <table class="table table-dark table-striped">
         <thead>
             <tr>
                 <th>Nome do Paciente</th>
-                <th>Hemocentro ou Hospital</th>
+                <th>Tipo Sanguíneo</th>
+                <th>Hemocentro</th>
                 <th>Endereço</th>
                 <th>CEP</th>
                 <th>Distância</th>
@@ -57,10 +52,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of getHemocentros()">
+            <tr *ngFor="let item of locaisDeDoacao">
                 <td>{{item.nome}}</td>
+                <td>{{item.tipoSanguineo}}</td>
                 <td>{{item.hemocentro}}</td>
-                <td>{{item.endereco}}</td>
+                <td>{{item.rua}}, {{item.numero}} - {{item.bairro}}. {{item.cidade}}/{{item.uf}}</td>
                 <td>{{item.cep}}</td>
                 <td>{{item.distancia}}</td>
                 <td>
@@ -77,25 +73,25 @@
         <div class="card bg-danger">
             <div class="card-body text-center">
                 <h3 class="card-text">Tipo A</h3>
-                <h2 class="card-text">{{tipoa}}</h2>
+                <h2 class="card-text">{{tipoa}}%</h2>
             </div>
         </div>
         <div class="card bg-danger">
             <div class="card-body text-center">
                 <h3 class="card-text">Tipo B</h3>
-                <h2 class="card-text">{{tipob}}</h2>
+                <h2 class="card-text">{{tipob}}%</h2>
             </div>
         </div>
         <div class="card bg-danger">
             <div class="card-body text-center">
                 <h3 class="card-text">Tipo AB</h3>
-                <h2 class="card-text">{{tipoab}}</h2>
+                <h2 class="card-text">{{tipoab}}%</h2>
             </div>
         </div>
         <div class="card bg-danger">
             <div class="card-body text-center">
                 <h3 class="card-text">Tipo O</h3>
-                <h2 class="card-text">{{tipoo}}</h2>
+                <h2 class="card-text">{{tipoo}}%</h2>
             </div>
         </div>
     </div>

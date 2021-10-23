@@ -8,6 +8,7 @@ class DoacaodesangueApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }

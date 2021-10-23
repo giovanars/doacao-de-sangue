@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { RegistreUmPedidoService } from './service/registre-um-pedido'
 import { FormRegistreUmPedido } from './model/registre-um-pedido';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class RegistreUmPedidoComponent implements OnInit {
   
-  constructor(private service: RegistreUmPedidoService) { }
+  constructor(private service: RegistreUmPedidoService, private router: Router) { }
   
   ngOnInit(): void {
   }
@@ -27,7 +28,8 @@ export class RegistreUmPedidoComponent implements OnInit {
     "bairro": "",
     "rua": "",
     "numero": "",
-    "complemento": ""
+    "complemento": "",
+    "hemocentro": ""
   }
 
   validaForm() {
@@ -59,8 +61,11 @@ export class RegistreUmPedidoComponent implements OnInit {
     
     } if(this.form.uf.trim() === "") {
       campos.push("UF");
+      
+    } if(this.form.hemocentro.trim() === "") {
+      campos.push("Hemocentro");
     }
-
+    
     return campos;
   }
 
@@ -75,6 +80,7 @@ export class RegistreUmPedidoComponent implements OnInit {
     this.form.sexo = "";
     this.form.tipoSanguineo = "";
     this.form.uf = "";
+    this.form.hemocentro = "";
   }
 
   buscaCep(event: any) {
@@ -105,8 +111,9 @@ export class RegistreUmPedidoComponent implements OnInit {
     if (formHasError) {
       this.service.salvaDoador(this.form).subscribe(
         (res) => {
-          console.log("Doador salvo com sucesso!");
-        
+          console.log("Pedido salvo com sucesso!");
+          alert("Pedido salvo com sucesso!");
+          this.router.navigate(['locais-de-doacao'])
         },(error: HttpErrorResponse) => {
         console.log("Error");
         console.log(error.error);
