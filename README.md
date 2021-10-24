@@ -21,7 +21,7 @@ O grupo optou pelo tema:
 * Angular
 * Bootstrap
 * Consome dados do VIACEP
-* Consome dados do Geocoding
+* Consome dados do Google Geocoding
 * Consome dados do Back-end
 
 ### Back-end:
@@ -31,7 +31,7 @@ O grupo optou pelo tema:
 * Utilização dos padrões REST
 
 ### Banco de dados:
-* MongoDB em um container Docker
+* MongoDB em um container Docker (senha 123456)
 
 # Como subir
 Clone o repositório.
