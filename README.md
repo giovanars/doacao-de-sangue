@@ -44,5 +44,5 @@ Clone o repositório.
 **Front-End:**
 1. Caso não possua, instale o angular a partir do comando: `npm install -g @angular/cli`
 2. Acesse o diretório spa/doacaodesangue e rode: `npm install`
-3. inicialize o projeto com o comando: `npm ng serve`
+3. inicialize o projeto com o comando: `ng serve`
 4. Para acessar a página front: http://localhost:4200/
